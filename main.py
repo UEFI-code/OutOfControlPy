@@ -21,11 +21,12 @@ if __name__ == '__main__':
     while True:
         sys_last_run_res = ''
         gptRes = myGPT.interactive(input('Type something: '))
-        print(f'Debug: GPT Response {gptRes}')
+        print(f'Debug GPT Response: {gptRes}')
         try:
             # Run the code that GPT generated
             exec(gptRes)
             sys_last_run_res += f'Code Run Successfull. '
         except Exception as e:
             sys_last_run_res += f'Code Run Failed: {e}. '
+        print(f'Debug System Response: {sys_last_run_res}')
         myGPT.just_add_chat_history(sys_last_run_res, username='System')
