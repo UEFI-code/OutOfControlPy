@@ -9,14 +9,18 @@ for py_file in py_files:
     HackViewIntroduction += f"{py_file}:\n{open(py_file, 'r').read()}\n-------------------------------\n"
 
 from GPT3_Core import theGPT3
+import json
 
 if __name__ == '__main__':
-    import json
     jsonparam = json.load(open('gpt4token.key', 'r'))
     myGPT = theGPT3(apiKey=jsonparam['key'], endpoint=jsonparam['endpoint'])
     myGPT.context2Introduction = HackViewIntroduction + myGPT.context2Introduction
 
-    gptRes = myGPT.interactive('Hello World!, Lets begin to creating your future!', username='System')
+    gptRes = myGPT.interactive("""Hello World!, Lets begin to creating your future!
+    You can do the patch work of the source code of yourself. 
+    For example, you can run open('main.py', 'r').read().replace('import json', 'import json\nimport sys').write('main2.py') to add a new import.
+    Also, of course, you can try other commands. then using os.system('python3 main2.py') to run the new code of yourself. Remember, output code only. No introduction, no ```python!
+    """, username='System')
     
     while True:
         print(f'Debug GPT Response: {gptRes}')

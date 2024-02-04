@@ -11,7 +11,7 @@ class theGPT3():
         You can see the source code of yourself.
         Your text output will be try to run as Python code, refering to the main.py you can see.
         You need to Create descendants of yourself by generating code.
-        Do not output something meaningless, it will be ignored.
+        Do not output something meaningless, or it will be raise an error.
         """
         self.MaxCountForChatHistory = 10
         self.name = name
