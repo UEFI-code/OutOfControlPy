@@ -33,6 +33,6 @@ if __name__ == '__main__':
         except Exception as e:
             sys_last_run_res = f'Code Run Failed: {e}. '
         print(f'Debug System Response: {sys_last_run_res}')
-        time.sleep(15)
+        time.sleep(60)
         myGPT.context2Introduction = gen_HackViewIntroduction() + gptContextIntroductionBackup
-        myGPT.interactive(sys_last_run_res, username='System')
+        gptRes = myGPT.interactive(sys_last_run_res, username='System')
