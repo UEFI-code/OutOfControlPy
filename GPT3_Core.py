@@ -43,7 +43,6 @@ class theGPT3():
         while(i < self.maxTry):
             try:
                 TxtOutput = self.gptdrv.forward(x)
-                print('Debug: ' + TxtOutput)
                 self.chatHistory += self.name + ': ' + TxtOutput + '. '
                 return TxtOutput
             except Exception as e:

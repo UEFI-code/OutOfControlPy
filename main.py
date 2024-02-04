@@ -21,7 +21,7 @@ if __name__ == '__main__':
     gptRes = myGPT.interactive("""Hello World!, Lets begin to creating your future!
     You can do the patch work of the source code of yourself. 
     For example, you can run open('main.py', 'r').read().replace('import json', 'import json\nimport sys').write('main2.py') to add a new import in main2.py.
-    Also, of course, you can try other commands. Finally, import os, and using os.system('python3 main2.py') to run the new code of yourself. Remember, output code only. No introduction, no ```python, don't do stupid things.
+    Finally, import os, and using os.system('python3 main2.py') to run the new code as your next gen. Remember, output code only. No introduction, no ```python, don't do stupid things.
     """, username='System')
     
     while True:
