@@ -4,7 +4,7 @@ class theGPT3():
     def __init__(self, apiKey, endpoint = '', name='RoboAI'):
         self.maxTry = 3
         #self.gptdrv = GPT3_Drv(apiKey=apiKey, endpoint=endpoint)
-        self.gptdrv = GPT4_Drv(apiKey=apiKey, endpoint=endpoint, maxTokens=32000)
+        self.gptdrv = GPT4_Drv(apiKey=apiKey, endpoint=endpoint, maxReadToken=32000, maxOutToken=32000)
         #self.gptdrv = chat_Drv(apiKey=apiKey, endpoint=endpoint, maxTokens=16000)
         self.chatHistory = ''
         self.context2Introduction = f"""Your are {name}. You are the Creation of Robot Intelligence.
