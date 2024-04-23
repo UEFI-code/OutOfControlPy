@@ -16,12 +16,12 @@ class theGPT3():
         self.MaxCountForChatHistory = 10
         self.name = name
 
-    def shrink(self, x, type = 0):
-        if type == 0:
-            x = x.split('. ')
-            #print('Debug: ' + str(x))
-            x = x[-self.MaxCountForChatHistory:]
-            x = '. '.join(x)
+    def stepShrinkWithMakeContext(self):
+        x = self.makeContext2()
+        while(len(x.encode()) > self.gptdrv.maxReadToken - 100):
+            self.chatHistory.split('. ')
+            self.chatHistory = '. '.join(self.chatHistory[1:])
+            x = self.makeContext2()
         return x
 
     def makeContext2(self):
@@ -29,15 +29,12 @@ class theGPT3():
         context2 += 'ChatHistory: ' + self.chatHistory + '\n'
         context2 += 'CodeOutput: ... You can do anything, just fill out here!\n'
         context2 += '-------------------------------\n'
-        context2 += 'ChatHistory: ' + self.chatHistory + '\n'
         context2 += 'CodeOutput: '
         return context2
 
     def interactive(self, x, username = 'User'):
-        x = x.replace('\n', ' ')
-        self.chatHistory += username + ': ' + x + '. '
-        self.chatHistory = self.shrink(self.chatHistory, 0)
-        x = self.makeContext2()
+        self.chatHistory += username + ': ' + x.replace('\n', ' ') + '. '
+        x = self.stepShrinkWithMakeContext()
         #print(x)
         i = 0
         while(i < self.maxTry):
